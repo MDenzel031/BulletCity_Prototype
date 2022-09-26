@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Platform
   - Enemy/dog
+  - Platforms
   layers:
   - Default
   - TransparentFX
@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - Platform
+  - Platforms
   - 
   - 
   - 
