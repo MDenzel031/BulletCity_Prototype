@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.collider.CompareTag("Platforms"))
         {
             GameObject.Find("Player").GetComponent<Animator>().SetBool("isJumping", false);
-            Debug.Log("Hello");
+            Debug.Log("Hell");
         }
     }
 }
