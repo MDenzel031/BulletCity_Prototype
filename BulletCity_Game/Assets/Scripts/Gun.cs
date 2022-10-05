@@ -34,13 +34,17 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
         //fireAnimation = !fireAnimation;
         //weaponAnimation.SetBool("isFiring", fireAnimation);
         Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
 
         Animator animator = gameObject.GetComponent<Animator>();
-
         animator.SetBool("shoot", true);
+
+        audioManager.playSound("gunShot");
+
         //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         //{
         //    animator.SetBool("shoot", false);

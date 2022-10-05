@@ -4,50 +4,36 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    #region
     public int maxHealth = 100;
     public int coinPoints = 5;
     int currentHealth;
     public int damage = 20;
 
-    //public HealthBar healthbar;
+    public HealthBar healthbar;
     //public GameObject popupCoin;
     //public GameObject deathAnimation;
     public bool hasDeathAnimation;
+    #endregion
 
-    // Start is called before the first frame update
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        //PlayerHealth player = collision.collider.GetComponent<PlayerHealth>();
-
-        //if (player != null)
-        //{
-        //    player.takeDamage(damage);
-
-        //}
-
-
-
-    }
+    #region
+    private AudioManager audioManager;
+    private GameManager gameManager;
+    #endregion
 
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        gameManager = FindObjectOfType<GameManager>();
         currentHealth = maxHealth;
-        //healthbar.setMaxHealth(maxHealth);
+        healthbar.setMaxHealth(maxHealth);
     }
 
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        //healthbar.setHealth(currentHealth);
+        healthbar.setHealth(currentHealth);
         //FindObjectOfType<AudioManager>().playSound("enemyHit");
         if (currentHealth <= 0)
         {
@@ -73,7 +59,8 @@ public class Enemy : MonoBehaviour
         //popupCoin.GetComponent<CoinPopScript>().coins = coinPoints;
         //Instantiate(popupCoin, gameObject.transform.position, gameObject.transform.rotation);
         Destroy(gameObject);
-        //FindObjectOfType<GameManager>().addAmountToCoins(coinPoints);
+        gameManager.addAmountToCoins(coinPoints);
+        audioManager.playSound("enemyDead");
 
 
 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy/dog
   - Platforms
+  - Enemy/goblin
+  - Coins
   layers:
   - Default
   - TransparentFX
