@@ -7,8 +7,9 @@ public class Playermovement : MonoBehaviour
 
     public CharacterController2D controller;
     public Animator animator; 
-
     public float moveSpeed;
+    public Joystick joystick;
+
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
@@ -16,23 +17,43 @@ public class Playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        //FOR KEYBOARD
+        //horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
 
+        //FOR JOYSTICK
+
+        if(joystick.Horizontal >= .2f)
+        {
+            horizontalMove = moveSpeed;
+
+        }else if(joystick.Horizontal <= -.2f)
+        {
+            horizontalMove = -moveSpeed;
+
+        }
+        else
+        {
+            horizontalMove = 0f;
+        }
+
+
+        //JUMPING AND CROUCHING FOR KEYBOARD
         animator.SetFloat("speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-            animator.SetBool("isJumping", true);
-        }
 
-        if (Input.GetButtonDown("Crouch")) 
-        {
-            crouch = true;
-        }else if (Input.GetButtonUp("Crouch"))
-        {
-            crouch = false;
-        }
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    jump = true;
+        //    animator.SetBool("isJumping", true);
+        //}
+
+        //if (Input.GetButtonDown("Crouch")) 
+        //{
+        //    crouch = true;
+        //}else if (Input.GetButtonUp("Crouch"))
+        //{
+        //    crouch = false;
+        //}
 
     }
 
@@ -52,5 +73,18 @@ public class Playermovement : MonoBehaviour
     public void onCrouching(bool isCrouching)
     {
         animator.SetBool("isCrouching", isCrouching);
+    }
+
+
+    //FOR JOYSTICK AND BUTTONS
+    //public void Shoot()
+    //{
+
+    //}
+
+    public void Jump()
+    {
+        jump = true;
+        animator.SetBool("isJumping", true);
     }
 }

@@ -68,20 +68,19 @@ public class Bullet : MonoBehaviour
         //}
 
         Enemy enemy = hitinfo.gameObject.GetComponent<Enemy>();
-        if(enemy != null)
+        if (enemy != null)
         {
             enemy.takeDamage(damage);
-            Debug.Log("Damage: " + damage);
-            //Debug.Log("Health is: " + enemy.current);
+
+            //Debug.Log("Damage: " + damage);
+
         }
 
-        Debug.Log("The Tag is: "+hitinfo.tag);
- 
 
         if (hitinfo.tag != "Coins" && hitinfo.gameObject.name != "HotZone")
         {
+            FindObjectOfType<AudioManager>().playSound("bulletImpact");
             Destroy(gameObject);
-            Debug.Log("The name: "+hitinfo.gameObject.name);
         }
     }
 }

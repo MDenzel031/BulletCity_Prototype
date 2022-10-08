@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -10,23 +11,39 @@ public class Gun : MonoBehaviour
 
     public Transform firepoint;
     public GameObject bulletPrefab;
+    public Button shootButton;
+
+    private bool isHeld = false;
+    private ButtonPressed buttonpressed;
     //public Animator weaponAnimation;
     bool fireAnimation = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonpressed = FindObjectOfType<ButtonPressed>();
     }
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetButton("Fire1") && Time.time > canfire)
+
+        //FOR KEYBOARD
+        //if (Input.GetButton("Fire1") && Time.time > canfire)
+        //{
+        //    Shoot();
+        //    canfire = Time.time + firerate;
+        //}
+
+        //FOR JOYSTICK AND BUTTONS
+        checkIfCanFire();
+    }
+
+    public void checkIfCanFire()
+    {
+        if (buttonpressed.isHeld && Time.time > canfire)
         {
-            //fireAnimation = !fireAnimation;
-            //weaponAnimation.SetBool("isFiring", fireAnimation);
             Shoot();
             canfire = Time.time + firerate;
         }

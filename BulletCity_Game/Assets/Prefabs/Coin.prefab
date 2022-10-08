@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1935560560136783734}
   - component: {fileID: 1935560560136783721}
   - component: {fileID: 1935560560136783720}
-  - component: {fileID: 2133373120}
+  - component: {fileID: 72132697}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coins
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1041763357
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 284a590648cd2624cbd085c4f1627465, type: 3}
@@ -130,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.28}
   m_EdgeRadius: 0
---- !u!114 &2133373120
+--- !u!114 &72132697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
