@@ -52,6 +52,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void swordSwing()
+    {
+        audioManager.playSound("swordSwing");
+    }
+
 
     void destroyEnemy()
     {
@@ -62,7 +67,7 @@ public class Enemy : MonoBehaviour
         gameManager.addAmountToCoins(coinPoints);
         audioManager.playSound("enemyDead");
 
-
-
     }
+
+
 }

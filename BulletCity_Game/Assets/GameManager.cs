@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(resetLevel), 2.0f);
     }
 
+    public void playerDeathByEnemy()
+    {
+        audioManager.playSound("deathSound");
+        Invoke(nameof(resetLevel), 2.0f);
+    }
+
 
     private int getCurrentCoins()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Playermovement : MonoBehaviour
@@ -38,7 +39,14 @@ public class Playermovement : MonoBehaviour
 
 
         //JUMPING AND CROUCHING FOR KEYBOARD
-        animator.SetFloat("speed", Mathf.Abs(horizontalMove));
+        try
+        {
+            animator.SetFloat("speed", Mathf.Abs(horizontalMove));
+        }
+        catch (Exception e)
+        {
+
+        }
 
 
         //if (Input.GetButtonDown("Jump"))

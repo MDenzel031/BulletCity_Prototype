@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     int currentHealth;
 
     public HealthBar healthbar;
+    public GameObject playerHurtPrefab;
     //public Animator playerAnimation;
 
     void Start()
@@ -33,7 +34,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //FindObjectOfType<GameManager>().playerDeath();
+            Transform playerTransform = gameObject.transform;
+            Instantiate(playerHurtPrefab, playerTransform.position, playerTransform.rotation);
+            gameObject.SetActive(false);
+            FindObjectOfType<GameManager>().playerDeathByEnemy();
         }
 
     }
