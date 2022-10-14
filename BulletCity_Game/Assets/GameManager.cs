@@ -17,6 +17,24 @@ public class GameManager : MonoBehaviour
         audioManager.playSound("bgMusic");
 
     }
+
+    private void Update()
+    {
+        bool isPause = FindObjectOfType<PausedScript>().isPause;
+
+        if (isPause == true)
+        {
+            Sound s = audioManager.decreaseSoundVolume("bgMusic");
+            s.source.volume = 0.2f;
+        }
+        else
+        {
+            Sound s = audioManager.decreaseSoundVolume("bgMusic");
+            s.source.volume = s.volume;
+        }
+    }
+
+
     public void addSingleCoin()
     {
         int currentCoins = getCurrentCoins();
