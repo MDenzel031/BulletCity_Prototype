@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Gun : MonoBehaviour
 {
@@ -42,10 +43,16 @@ public class Gun : MonoBehaviour
 
     public void checkIfCanFire()
     {
-        if (buttonpressed.isHeld && Time.time > canfire)
+        try
         {
-            Shoot();
-            canfire = Time.time + firerate;
+            if (buttonpressed.isHeld && Time.time > canfire)
+            {
+                Shoot();
+                canfire = Time.time + firerate;
+            }
+        }catch(Exception e)
+        {
+
         }
     }
 
@@ -60,7 +67,14 @@ public class Gun : MonoBehaviour
         Animator animator = gameObject.GetComponent<Animator>();
         animator.SetBool("shoot", true);
 
-        audioManager.playSound("gunShot");
+        try
+        {
+            audioManager.playSound("gunShot");
+        }
+        catch(Exception e)
+        {
+
+        }
 
         //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         //{
